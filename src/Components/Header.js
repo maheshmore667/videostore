@@ -1,13 +1,21 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { toggleSidebar } from "../Utils/Store/Slices/navSlice";
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const toggleSidebarAction = () =>{
+    dispatch(toggleSidebar())
+  }
+
   return (
     <div className="grid grid-cols-12 shadow-md shadow-slate-400">
       <div className="col-span-1 flex justify-center py-2">
         <img
-          className="h-10 ml-3"
+          className="h-10 ml-5"
           alt="hampberger menu"
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW9GPrJX62kvafWyRN5gU_FkGK0KyX7YnOew&usqp=CAU"
+          onClick={toggleSidebarAction}
         />
         <img
           className="h-12 ml-2"
