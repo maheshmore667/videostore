@@ -12,7 +12,7 @@ const Header = () => {
     <div className="grid grid-cols-12 shadow-md shadow-slate-400">
       <div className="col-span-1 flex justify-center py-2">
         <img
-          className="h-10 ml-5"
+          className="h-10 ml-5 cursor-pointer"
           alt="hampberger menu"
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW9GPrJX62kvafWyRN5gU_FkGK0KyX7YnOew&usqp=CAU"
           onClick={toggleSidebarAction}
