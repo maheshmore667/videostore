@@ -21,7 +21,7 @@ const VideoContainer = () => {
      <ButtonList />
      <div className="m-2 flex flex-wrap justify-center">
       {
-        movies?.map((movie)=> <MovieCard key={movie?.id} info = {movie}/>)
+        movies?.map((movie)=><MovieCard key={movie?.id} info = {movie}/ >)
       }
      
      </div>
