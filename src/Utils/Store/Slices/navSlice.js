@@ -6,8 +6,11 @@ const navSlice = createSlice({
     reducers : {
         toggleSidebar : (state =>{
             return !state;
+        }),
+        closeSideBar : (state =>{
+            return state = false;
         })
     }
 })
-export const { toggleSidebar} = navSlice?.actions;
+export const { toggleSidebar, closeSideBar} = navSlice?.actions;
 export default navSlice?.reducer
