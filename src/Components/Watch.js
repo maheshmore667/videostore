@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { closeSideBar } from "../Utils/Store/Slices/navSlice";
 import { useSearchParams } from "react-router-dom";
 import { YOUTUBE_VIDEOS_URL } from "../Utils/Constants";
-import MovieCard from "./MovieCard";
+import  { DataModified } from "./MovieCard";
 
 const Watch = () => {
   const dispatch = useDispatch();
@@ -37,7 +37,7 @@ const Watch = () => {
       <div className="w-[30%]">
         <div className="w-full flex flex-col">
           {likedMovies?.map((movie) => (
-            <MovieCard key={movie?.id} info={movie} />
+              <DataModified  key={movie?.id} info = {movie}/ >
           ))}
         </div>
       </div>
