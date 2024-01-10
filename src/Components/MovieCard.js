@@ -33,7 +33,10 @@ const timeDifference = currentDate - targetDate;
 const seconds = Math.floor(timeDifference / 1000);
 const minutes = Math.floor(seconds / 60);
 const hours = Math.floor(minutes / 60);
-info.snippet.publishedBefore = `${hours} hours ago`
+let days = hours/24;
+days = parseInt(days)
+ 
+info.snippet.publishedBefore = days >0 ? `${days} days ago` : `${hours} hours ago`
   if(viewCount?.length > 3){
     info.statistics.viewCount = `${viewCount?.substr(0,3)}k views`
   } else {
