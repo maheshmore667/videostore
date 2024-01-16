@@ -4,6 +4,7 @@ import { closeSideBar } from "../Utils/Store/Slices/navSlice";
 import { useSearchParams } from "react-router-dom";
 import { YOUTUBE_VIDEOS_URL } from "../Utils/Constants";
 import  { DataModified } from "./MovieCard";
+import CommentsContainer from "./CommentsContainer";
 
 const Watch = () => {
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ const Watch = () => {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
         ></iframe>
+        <CommentsContainer />
       </div>
       <div className="w-[30%]">
         <div className="w-full flex flex-col">
