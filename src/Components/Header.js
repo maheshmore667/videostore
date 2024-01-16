@@ -1,19 +1,28 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleSidebar } from "../Utils/Store/Slices/navSlice";
 import {
   YOUTUBE_API_KEY,
   YOUTUBE_SEARCH_SUGGESTIONS,
 } from "../Utils/Constants";
 import { useNavigate } from "react-router-dom";
+import { addSearchCache } from "../Utils/Store/Slices/searchSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState(null);
   const navigate = useNavigate();
+  const searchCache = useSelector((store) => store?.searchSlice);
+
   useEffect(() => {
-    const timer = setTimeout(() => getSearchSuggestionResults(), 500);
+    const timer = setTimeout(() => {
+      if (searchCache[searchText]) {
+        setSearchResults(searchCache[searchText]);
+      } else {
+        getSearchSuggestionResults();
+      }
+    }, 500);
     return () => {
       clearTimeout(timer);
     };
@@ -30,7 +39,8 @@ const Header = () => {
         `${YOUTUBE_SEARCH_SUGGESTIONS}${searchText}&type=video&key=${YOUTUBE_API_KEY}`
       );
       const response = await data?.json();
-      setSearchResults(response);
+      setSearchResults(response?.items);
+      dispatch(addSearchCache({ [searchText]: response?.items }));
     } catch (error) {
       console.log(error);
     }
@@ -69,7 +79,7 @@ const Header = () => {
           </button>
         </div>
         <div className="absolute bg-slate-100 flex flex-col top-12 left-56">
-          {searchResults?.items?.map(
+          {searchResults?.map(
             (result) =>
               searchText && (
                 <div
