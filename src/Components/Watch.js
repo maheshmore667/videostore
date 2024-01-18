@@ -5,6 +5,8 @@ import { useSearchParams } from "react-router-dom";
 import { YOUTUBE_VIDEOS_URL } from "../Utils/Constants";
 import  { DataModified } from "./MovieCard";
 import CommentsContainer from "./CommentsContainer";
+import LiveChat from "./LiveChat";
+import InputLiveChat from "./InputLiveChat";
 
 const Watch = () => {
   const dispatch = useDispatch();
@@ -24,7 +26,7 @@ const Watch = () => {
   };
 
   return (
-    <div className="flex w-full h-screen">
+    <div className="flex w-full h-screen mt-3">
       <div className="w-[70%] h-[70%]">
         <iframe
           className="w-full h-full p-2"
@@ -37,6 +39,10 @@ const Watch = () => {
         <CommentsContainer />
       </div>
       <div className="w-[30%]">
+        <div className="mt-2 w-full flex flex-col h-[55%] border-2 border-blue-500 rounded-lg overflow-y-scroll">
+          <LiveChat />
+        </div>
+        <InputLiveChat />
         <div className="w-full flex flex-col">
           {likedMovies?.map((movie) => (
               <DataModified  key={movie?.id} info = {movie}/ >
